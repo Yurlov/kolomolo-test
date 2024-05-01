@@ -1,0 +1,23 @@
+server:
+  port: 8500
+  servlet:
+    context-path: /
+
+# Spring
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+dataset:
+  file:
+    path: hdfs://namenode:9000/data/warehouse/cuisine/dataset.csv
+
+spark:
+  master:
+    host: spark://spark-master:7077
+
+spark:
+  app:
+    name: TopCuisineTypes

@@ -1,0 +1,48 @@
+server:
+  port: 8500
+  servlet:
+    context-path: /
+
+openai-service:
+  api-key: sk-proj-DiHGzIBBrGDo0jMsgMHdT3BlbkFJNrOo4Gepx2zNrj74r92z
+  gpt-model: gpt-3.5-turbo
+  audio-model: whisper-1
+  http-client:
+    read-timeout: 3000
+    connect-timeout: 3000
+  urls:
+    base-url: https://api.openai.com/v1
+    chat-url: /chat/completions
+    create-transcription-url: /audio/transcriptions
+
+logging:
+  level:
+    com.github.kolomolo.service.openaiclient: TRACE
+
+# Spring
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: 'ALWAYS'
+  health:
+    circuitbreakers:
+      enabled: true
+
+application:
+  security:
+    jwt:
+      secret-key: duhe2d7y378dy3duf3edt76e3t73dug3dt763et78de3d873td7
+      expr: 86400000
